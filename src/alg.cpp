@@ -3,8 +3,6 @@
 #include <map>
 #include "tstack.h"
 
-using namespace std;
-
 int priority(char op) {
   switch (op) {
     case '(': return 0;
@@ -29,7 +27,7 @@ int calc(char op, int x, int y) {
 
 std::string infx2pstfx(std::string inf) {
 TStack <char, 100> charstack;
-string str = "";
+std::string str = "";
 for (int i = 0; i < inf.length(); i++) {
   if (priority(inf[i]) == 4) {
     str += inf[i];
@@ -44,8 +42,9 @@ for (int i = 0; i < inf.length(); i++) {
              str += " ";
              str += charstack.get();
              charstack.pop();
-             str += " "; 
-             while ((priority(inf[i]) <= priority(charstack.get()) || priority(charstack.get()) != 0) && !charstack.isEmpty()) {
+             str += " ";
+             while ((priority(inf[i]) <= priority(charstack.get())
+                     || priority(charstack.get()) != 0) && !charstack.isEmpty()) {
                str += " ";
                str += charstack.get();
                charstack.pop();
@@ -62,7 +61,7 @@ for (int i = 0; i < inf.length(); i++) {
               charstack.pop();
             }
             charstack.pop();
-        } 
+        }
     }
     while (!charstack.isEmpty()) {
       str += " ";
