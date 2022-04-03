@@ -27,8 +27,8 @@ int calc(char op, int x, int y) {
 
 
 std::string infx2pstfx(std::string inf) {
-TStack <char, 100> charstack;
-std::string end = "";
+  std::string end = "";
+  TStack <char, 100> charstack;
 for (int i = 0; i < inf.length(); i++) {
   if (priority(inf[i]) == 4) {
     end += inf[i];
