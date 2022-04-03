@@ -25,9 +25,9 @@ int calc(char op, int x, int y) {
   return 0;
 }
 
+std::string str1 = "";
 std::string infx2pstfx(std::string inf) {
 TStack <char, 100> charstack;
-std::string str1 = "";
 for (int i = 0; i < inf.length(); i++) {
   if (priority(inf[i]) == 4) {
     str1 += inf[i];
