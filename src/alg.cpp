@@ -27,28 +27,28 @@ int calc(char op, int x, int y) {
 
 std::string infx2pstfx(std::string inf) {
 TStack <char, 100> charstack;
-std::string str = "";
+std::string str1 = "";
 for (int i = 0; i < inf.length(); i++) {
   if (priority(inf[i]) == 4) {
-    str += inf[i];
+    str1 += inf[i];
   } else if (priority(inf[i]) > 1 && priority(inf[i]) < 4) {
       if (charstack.isEmpty() || priority(charstack.get()) == 0) {
         charstack.push(inf[i]);
-          str += " ";
+          str1 += " ";
          } else if (priority(inf[i]) > priority(charstack.get())) {
              charstack.push(inf[i]);
-             str += " ";
+             str1 += " ";
          } else if (priority(inf[i]) <= priority(charstack.get())) {
-             str += " ";
-             str += charstack.get();
+             str1 += " ";
+             str1 += charstack.get();
              charstack.pop();
-             str += " ";
+             str1 += " ";
              while ((priority(inf[i]) <= priority(charstack.get())
-                     || priority(charstack.get()) != 0) && !charstack.isEmpty()) {
-               str += " ";
-               str += charstack.get();
+             || priority(charstack.get()) != 0) && !charstack.isEmpty()) {
+               str1 += " ";
+               str1 += charstack.get();
                charstack.pop();
-               str += " ";
+               str1 += " ";
              }
              charstack.push(inf[i]);
           }
@@ -56,19 +56,19 @@ for (int i = 0; i < inf.length(); i++) {
             charstack.push(inf[i]);
         } else if (priority(inf[i]) == 1) {
             while (priority(charstack.get()) != 0) {
-              str += " ";
-              str += charstack.get();
+              str1 += " ";
+              str1 += charstack.get();
               charstack.pop();
             }
             charstack.pop();
         }
     }
     while (!charstack.isEmpty()) {
-      str += " ";
-      str += charstack.get();
+      str1 += " ";
+      str1 += charstack.get();
       charstack.pop();
     }
-  return str;
+  return str1;
 }
 
 int eval(std::string postf) {
