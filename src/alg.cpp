@@ -69,7 +69,7 @@ for (int i = 0; i < inf.length(); i++) {
       end += charstack.get();
       charstack.pop();
     }
-  return str1;
+  return end;
 }
 
 int eval(std::string postf) {
